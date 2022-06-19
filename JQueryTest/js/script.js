@@ -33,12 +33,19 @@ $(function () {
     "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1583&q=80",
   ];
   let i = 0;
-  console.log(slideShow);
   setInterval(() => {
     i = (i + 1) % imgLink.length; //0,1,2,3,4,0,1,2,3,4....
     slideShow.fadeOut(function () {
       $(this).attr("src", imgLink[i]);
       $(this).fadeIn();
     });
-  }, 2000);
+  }, 3000);
+
+  //Add and remove data of an element
+  slideShow.data("ImageLinkList", imgLink);
+  console.log(slideShow.data());
+  slideShow.data("name", "Test name");
+  console.log(slideShow.data());
+  slideShow.removeData();
+  console.log(slideShow.data());
 });
