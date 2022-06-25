@@ -48,4 +48,39 @@ $(function () {
   console.log(slideShow.data());
   slideShow.removeData();
   console.log(slideShow.data());
+
+  //Delegate event for paragraph
+  $(".paragraph").on("click", "p", function () {
+    $(this).css("color", "red");
+  });
+
+  //Check isChecked checkbox
+  $("checkbox").on("change", function () {
+    //Solution 1
+    let isChecked = $(this).is(":checked");
+
+    //Solution 2
+    let ischecked2 = $(this).prop("checked");
+  });
+
+  //Get value of selected option
+  $("#select-option").on("change", function () {
+    let selectedOption = $(this).find(":selected:not(:first-child)").text();
+    console.log(selectedOption);
+  });
+
+  //AJAX
+  $.ajax({
+    url: "./js/data.json",
+    type: "GET",
+  })
+    .fail(function (res) {
+      console.log("Failed");
+    })
+    .done(function (res) {
+      console.log(res);
+    })
+    .always(function (res) {
+      console.log("Always run!");
+    });
 });
